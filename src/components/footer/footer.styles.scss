@@ -1,0 +1,25 @@
+.footer {
+    background: rgb(28, 28, 28);
+    padding: 3rem 0rem;
+    .container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    color: white;
+    grid-gap: 20px;
+
+
+    ul li {
+        margin-bottom: 1rem;
+        font-size: 1rem;
+    }
+}
+}
+
+
+// smaller screens
+@media(max-width: 800px) {
+    .footer .container {
+        grid-template-columns:  1fr;
+        text-align: center;
+    }
+}

@@ -1,0 +1,88 @@
+.home {
+    min-height: 100vh;
+    position: relative;
+
+    .header h1 {
+        color: white;
+    }
+
+    .header a {
+        color: white;
+        text-transform: capitalize;
+        &.login {
+            color:  white;
+            background: red;
+            padding: 0.5rem 1rem;
+            
+        }
+    }
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right:0;
+        bottom: 0;
+        background: rgba(black, 0.6);
+    }
+
+    .content {
+        position: relative;
+        width: 800px;
+        max-width: 80%;
+        margin: 10rem auto 0
+    }
+    
+    .text-wrapper {
+        margin-bottom: 2rem;
+        h1 {
+        color: white;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    p {
+        color: white;
+        text-align: center;
+        font-size: 1.4rem;
+    }
+
+    }
+
+    .input-wrapper {
+        display: flex;
+        input {
+            width: 80%;
+            padding: 0.8rem 0rem;
+            text-indent: 20px;
+            font-size: 1.2rem;
+        }
+
+        button {
+            width: 20%;
+            outline: none;
+            border: none; 
+            background: red;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 800;
+        }
+    }
+}
+
+@media(max-width: 800px) {
+    .home .input-wrapper {
+        flex-direction: column;
+        input, button {
+            width: 100%;
+
+        }
+
+        input {
+            margin-bottom: 1rem;
+        }
+
+        button {
+            padding: 1rem 0rem;
+        }
+    }
+}
