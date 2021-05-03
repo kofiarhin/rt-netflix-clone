@@ -1,6 +1,5 @@
 import React from "react"
 import Header from "../header/header.component"
-import "./movie.styles.scss"
 
 class Movie extends React.Component {
 
@@ -32,29 +31,17 @@ class Movie extends React.Component {
         const backdropUrl = `https://image.tmdb.org/t/p/w1280${backdrop_path}`
 
 
-        return <div>
+        return <div className="item-unit" style={{
+            backgroundImage: `url(${backdropUrl})`
+        }}>
 
-            <div className="movie" style={{
-                backgroundImage: `url(${backdropUrl})`
-            }}>
-                <div className="overlay"></div>
+            <div className="overlay"></div>
 
-                <div className="container">
-
-                    <div className="content">
-
-                        <img src={posterUrl} alt="" />
-
-                        <div className="text-wrapper">
-                            <h1> {title} </h1>
-                            <p> {overview} </p>
-                            <button> Save</button>
-                        </div>
-
-                    </div>
-
-                </div>
-
+            <div className="content-wrapper">
+                <img src={posterUrl} alt="" />
+                <h1> {title}  </h1>
+                <p> {overview} </p>
+                <button>Save</button>
             </div>
         </div>
     }

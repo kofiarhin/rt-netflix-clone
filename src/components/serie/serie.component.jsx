@@ -4,14 +4,49 @@ import Header from "../header/header.component"
 
 class Serie extends React.Component {
 
+    state = {
+        data: {}
+    }
+
+    componentDidMount() {
+
+        const { id } = this.props.match.params;
+
+        const url = `https://api.themoviedb.org/3/tv/${id}?api_key=ca357c71903c409f2ce08d61e75700a6&language=en-US
+`;
+
+        fetch(url).then(response => response.json()).then(result => {
+
+            this.setState({
+                data: result
+            })
+        })
+
+
+
+    }
+
     render() {
 
-        return <div>
+        const { name: title, poster_path, backdrop_path, overview } = this.state.data;
 
-            <Header />
+        const posterUrl = `https://image.tmdb.org/t/p/w1280${poster_path}`
+        const backdropUrl = `https://image.tmdb.org/t/p/w1280${backdrop_path}`
 
-            <h1 className="title"> Item detail</h1>
-``        </div>
+
+        return <div className="item-unit" style={{
+            backgroundImage: `url(${backdropUrl})`
+        }}>
+
+            <div className="overlay"></div>
+
+            <div className="content-wrapper">
+                <img src={posterUrl} alt="" />
+                <h1> {title}  </h1>
+                <p> {overview} </p>
+                <button>Save</button>
+            </div>
+        </div>
     }
 }
 
