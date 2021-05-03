@@ -58,7 +58,7 @@ class Movies extends React.Component {
             <div className="container">
 
 
-                <h1 className="title">All Movies</h1>
+                <h1 className="title">All <span>Movies</span> </h1>
 
                 <div className="wrapper">
                     {

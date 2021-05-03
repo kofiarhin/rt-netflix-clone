@@ -49,7 +49,7 @@ class Series extends React.Component {
 
         return <div>
 
-            <h1 className="title">All Series</h1>
+            <h1 className="title">All <span>Series</span> </h1>
 
             <div className="container">
                 <div className="wrapper">

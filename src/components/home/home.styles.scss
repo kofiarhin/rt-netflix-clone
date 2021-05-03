@@ -25,12 +25,9 @@ $red:#E50914;
         position: relative;
         width: 800px;
         max-width: 90%;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        color: white;
+        margin: 6rem auto 0;
         text-align: center;
-        transform: translate(-50%, -50%)
+        color: white;
     
     }
 
@@ -70,8 +67,11 @@ $red:#E50914;
 
 @media(max-width: 800px) {
     .home {
+        .content {
+            top: 60%;
+        }
         .content h1 {
-            font-size: 2rem;
+            font-size: 2.5rem;
         }
 
         .input-wrapper {
@@ -88,5 +88,17 @@ $red:#E50914;
                 padding: 1rem 0rem;
             }
         }
+    }
+}
+
+
+@media(max-width: 500px) {
+
+    .home .content {
+        margin-top: 2rem;
+    }
+
+    .home .content h1 {
+        font-size: 2rem;
     }
 }
