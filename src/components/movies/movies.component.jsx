@@ -53,7 +53,6 @@ class Movies extends React.Component {
 
 
         return <div>
-            <Header />
 
 
             <div className="container">
@@ -67,7 +66,7 @@ class Movies extends React.Component {
 
                             const imgUrl = `https://image.tmdb.org/t/p/w1280${poster_path}`
 
-                            return <Link to={`/movies/${id}`} key={id}>
+                            return <Link to={`/main/movies/${id}`} key={id}>
                                 <img src={imgUrl} alt="" />
                                 <h1> {title} </h1>
 

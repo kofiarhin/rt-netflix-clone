@@ -1,29 +1,18 @@
-.header {
+.header  {
+
     position: relative;
-}
 
-.header .container {
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
 
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 2rem 0rem;
-
-            img {
-                width: 200px;
-            }
-
-            a {
-                margin-left: 1rem;
-                font-size: 1.2rem;
-            }
-
-           
-}
-
-@media(max-width: 800px) {
-
-    .header .container {
-        flex-direction: column;
+        a {
+            margin-left: 1rem;
+            font-size: 1.2rem;
+        }
+    }
+    img {
+        width: 200px;
     }
 }

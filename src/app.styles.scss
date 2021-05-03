@@ -19,6 +19,13 @@ ul {
     list-style-type: none;
 }
 
+
+button {
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
 .title {
     text-align: center;
     font-size: 2rem;

@@ -8,7 +8,6 @@ class Login extends React.Component {
     render() {
 
         return <div className="login">
-            <Header />
 
             <h1 className="title">Login</h1>
 
@@ -18,7 +17,7 @@ class Login extends React.Component {
                 <button>Login</button>
                 <button className="google">Login With Google</button>
 
-                <p> Dont have an account ?  <Link to='/register'> Register</Link>  </p>
+                <p> Dont have an account ?  <Link to='/main/register'> Register</Link>  </p>
 
             </div>
         </div>

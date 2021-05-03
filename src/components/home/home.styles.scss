@@ -1,88 +1,92 @@
+$red:#E50914;
+
 .home {
     min-height: 100vh;
     position: relative;
-
-    .header h1 {
-        color: white;
-    }
-
-    .header a {
-        color: white;
-        text-transform: capitalize;
-        &.login {
-            color:  white;
-            background: red;
-            padding: 0.5rem 1rem;
-            
+    .header {
+        background: transparent;
+        position: relative;
+        z-index: 2000;
+        a {
+            color: white;
         }
     }
     .overlay {
         position: absolute;
         top: 0;
         left: 0;
-        right:0;
+        right: 0;
         bottom: 0;
-        background: rgba(black, 0.6);
+        background: rgba(black, 0.6)
     }
 
     .content {
+        z-index: 2000;
         position: relative;
         width: 800px;
-        max-width: 80%;
-        margin: 10rem auto 0
-    }
+        max-width: 90%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        color: white;
+        text-align: center;
+        transform: translate(-50%, -50%)
     
+    }
+
+
     .text-wrapper {
         margin-bottom: 2rem;
+        
         h1 {
-        color: white;
-        text-align: center;
-        margin-bottom: 2rem;
-    }
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
 
-    p {
-        color: white;
-        text-align: center;
-        font-size: 1.4rem;
-    }
-
+        p {
+            font-size: 1.2rem;
+        }
     }
 
     .input-wrapper {
         display: flex;
+
         input {
-            width: 80%;
-            padding: 0.8rem 0rem;
+            width: 70%;
+            padding: 1rem 0rem;
             text-indent: 20px;
             font-size: 1.2rem;
+            font-weight: 800;
         }
-
         button {
-            width: 20%;
-            outline: none;
-            border: none; 
-            background: red;
+
+            width: 30%;
+            background: $red;
             color: white;
             font-size: 1.2rem;
-            font-weight: 800;
         }
     }
 }
 
 @media(max-width: 800px) {
-    .home .input-wrapper {
-        flex-direction: column;
-        input, button {
-            width: 100%;
-
+    .home {
+        .content h1 {
+            font-size: 2rem;
         }
 
-        input {
-            margin-bottom: 1rem;
-        }
+        .input-wrapper {
+            flex-direction: column;
+            input, button {
+                width: 100%;
+                font-size: 1rem;
+            }
 
-        button {
-            padding: 1rem 0rem;
+            input {
+                margin-bottom: 1rem;
+            }
+            button {
+                padding: 1rem 0rem;
+            }
         }
     }
 }

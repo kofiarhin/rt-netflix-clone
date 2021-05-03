@@ -34,7 +34,6 @@ class Movie extends React.Component {
 
         return <div>
 
-            <Header />
             <div className="movie" style={{
                 backgroundImage: `url(${backdropUrl})`
             }}>
@@ -49,7 +48,9 @@ class Movie extends React.Component {
                         <div className="text-wrapper">
                             <h1> {title} </h1>
                             <p> {overview} </p>
+                            <button> Save</button>
                         </div>
+
                     </div>
 
                 </div>

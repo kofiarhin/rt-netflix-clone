@@ -34,10 +34,10 @@ class Series extends React.Component {
 
         fetch(url).then(response => response.json()).then(result => {
 
-            const { results: data } = result;
+            const { results } = result;
 
             this.setState({
-                data,
+                data: [...this.state.data, ...results],
                 page
             })
         })
@@ -49,7 +49,7 @@ class Series extends React.Component {
 
         return <div>
 
-            <Header />
+            <h1 className="title">All Series</h1>
 
             <div className="container">
                 <div className="wrapper">
@@ -57,7 +57,7 @@ class Series extends React.Component {
                         data.map(({ id, poster_path, name, ...rest }) => {
 
 
-                            return <Link to={`/series/${id}`} key={id}>
+                            return <Link to={`/main/series/${id}`} key={id}>
 
                                 <img src={`https://image.tmdb.org/t/p/w1280${poster_path}`} alt="" />
                                 <h1>  {name} </h1>

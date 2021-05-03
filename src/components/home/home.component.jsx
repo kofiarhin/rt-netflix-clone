@@ -12,11 +12,9 @@ const Home = () => {
     }}>
 
 
-
-        <div className="overlay"></div>
-
         <Header />
 
+        <div className="overlay"></div>
         <div className="content">
 
             <div className="text-wrapper">
