@@ -1,12 +1,12 @@
 import React from "react"
 import { Link } from "react-router-dom"
+import { auth } from "../../firebase/firebase.utils"
 
 
 import "./header.styles.scss"
 
-const Header = (props) => {
+const Header = ({ user }) => {
 
-    console.log(props)
 
     return <div className="header">
 
@@ -17,9 +17,14 @@ const Header = (props) => {
 
             <div>
                 <Link to="/"> Home</Link>
-                <Link to="/main/movies">Movies</Link>
-                <Link to="/main/series">Series</Link>
-                <Link to="/main/login" className="login">Login</Link>
+                {
+                    user ? <span>
+
+                        <Link to="/main/movies">Movies</Link>
+                        <Link to="/main/series">Series</Link>
+                    </span> : null
+                }
+                {user ? <span onClick={() => auth.signOut()}>SignOut</span> : <Link to="/main/login">Login</Link>}
             </div>
         </div>
 

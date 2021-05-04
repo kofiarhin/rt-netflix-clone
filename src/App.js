@@ -10,21 +10,41 @@ import Serie from "./components/serie/serie.component"
 import Footer from "./components/footer/footer.component"
 import Register from "./components/register/register.component"
 import Main from "./components/Main/main.component"
-
+import { auth  } from "./firebase/firebase.utils"
 import "./app.styles.scss"
 
-const App = () => {
+class  App  extends React.Component {
 
-  return <div>
+ 
+    state = {
+        user: null
+    }
+
+    componentDidMount() {
+
+        auth.onAuthStateChanged(user => {
+
+            this.setState({
+              user
+            })
+        })
+    }
+
+
+  render() {
+
+    return <div>
 
         <Switch> 
           <Route path="/" exact component={Home}  />
-          <Route path="/main" component={Main} />
+          <Route path="/main" render={() => <Main user={this.state.user} />  } />
         </Switch>
 
         <Footer /> 
 
   </div>
+  }
+  
 }
 
 export default App;
