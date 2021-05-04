@@ -42,8 +42,6 @@ class Serie extends React.Component {
 
             <div className="content-wrapper">
 
-                <img src="/img/play-button.png" alt="" className="play-button" />
-
                 <div className="img-wrapper">
                     <img src={posterUrl} alt="" />
                 </div>
@@ -51,8 +49,12 @@ class Serie extends React.Component {
                 <div className="text-wrapper">
                     <h1> {title}  </h1>
                     <p> {overview} </p>
-                    <button>Save</button>
+                    <div className="button-wrapper">
+                        <button className="play">Play</button>
+                        <button className="save">Save</button>
+                    </div>
                 </div>
+
             </div>
         </div>
     }
