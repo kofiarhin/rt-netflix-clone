@@ -41,10 +41,18 @@ class Serie extends React.Component {
             <div className="overlay"></div>
 
             <div className="content-wrapper">
-                <img src={posterUrl} alt="" />
-                <h1> {title}  </h1>
-                <p> {overview} </p>
-                <button>Save</button>
+
+                <img src="/img/play-button.png" alt="" className="play-button" />
+
+                <div className="img-wrapper">
+                    <img src={posterUrl} alt="" />
+                </div>
+
+                <div className="text-wrapper">
+                    <h1> {title}  </h1>
+                    <p> {overview} </p>
+                    <button>Save</button>
+                </div>
             </div>
         </div>
     }

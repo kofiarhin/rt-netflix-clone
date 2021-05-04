@@ -38,10 +38,20 @@ class Movie extends React.Component {
             <div className="overlay"></div>
 
             <div className="content-wrapper">
-                <img src={posterUrl} alt="" />
-                <h1> {title}  </h1>
-                <p> {overview} </p>
-                <button>Save</button>
+
+                <div className="img-wrapper">
+                    <img src={posterUrl} alt="" />
+                </div>
+
+                <div className="text-wrapper">
+                    <h1> {title}  </h1>
+                    <p> {overview} </p>
+                    <div className="button-wrapper">
+                        <button className="play">Play</button>
+                        <button className="save">Save</button>
+                    </div>
+                </div>
+
             </div>
         </div>
     }

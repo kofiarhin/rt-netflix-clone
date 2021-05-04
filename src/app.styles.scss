@@ -127,8 +127,14 @@ button {
        background: rgba(black, .6)
 
     }
+
+    .img-wrapper {
+        position: relative;
+        width: 300px;
+    }
+  
     img {
-        width: 350px;
+        width: 100%;
         
     }
 
@@ -148,6 +154,10 @@ button {
         margin-bottom: 2rem;
     }
 
+    .button-wrapper {
+        display: flex;
+    }
+
     button {
         display: block;
         background: red;
@@ -155,6 +165,19 @@ button {
         padding: 1rem 0rem;
         color: white;
         font-size: 1.2rem;
+        &.save {
+            background: rgb(2, 53, 91);
+            width: 20%;
+            &:hover {
+                background: white;
+                color: black;
+            }
+        }
+        &.play {
+            width: 80%;
+        }
+
+        
     }
    
 }
@@ -169,6 +192,13 @@ button {
         h1 {
             font-size: 1rem;
         }
+    }
+
+    .item-unit {
+        text-align: center;
+    }
+    .img-wrapper {
+            margin: 0 auto;
     }
 }
 
