@@ -12,6 +12,8 @@ import Register from "./components/register/register.component"
 import Main from "./components/Main/main.component"
 import { auth  } from "./firebase/firebase.utils"
 import "./app.styles.scss"
+import { connect } from "react-redux"
+import { setCurrentUser } from "./redux/user/user.action"
 
 class  App  extends React.Component {
 
@@ -22,11 +24,11 @@ class  App  extends React.Component {
 
     componentDidMount() {
 
+      console.log(this.props)
+
         auth.onAuthStateChanged(user => {
 
-            this.setState({
-              user
-            })
+              this.props.dispatch(setCurrentUser(user))
         })
     }
 
@@ -37,7 +39,7 @@ class  App  extends React.Component {
 
         <Switch> 
           <Route path="/" exact component={Home}  />
-          <Route path="/main" render={() => <Main user={this.state.user} />  } />
+          <Route path="/main" component={Main} />
         </Switch>
 
         <Footer /> 
@@ -47,4 +49,10 @@ class  App  extends React.Component {
   
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps)(App);
