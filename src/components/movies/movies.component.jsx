@@ -2,14 +2,19 @@ import React from "react"
 import { Link } from "react-router-dom"
 import Header from "../header/header.component"
 
+import Spinner from "../spinner/spinner.component"
+import MoviesList from "../movies-list/movies-list.component"
 
+
+import "./movies.styles.scss"
 
 class Movies extends React.Component {
 
 
     state = {
         data: [],
-        page: 1
+        page: 1,
+        isLoading: true
     }
 
     componentDidMount() {
@@ -20,8 +25,10 @@ class Movies extends React.Component {
 
             const { results } = result;
 
+
             this.setState({
-                data: results
+                data: results,
+                isLoading: false
             })
         })
 
@@ -40,6 +47,7 @@ class Movies extends React.Component {
 
             const { results } = result;
 
+
             this.setState({
                 data: [...this.state.data, ...results],
                 page
@@ -49,35 +57,21 @@ class Movies extends React.Component {
 
     render() {
 
-        const { data } = this.state;
+        const { data, isLoading } = this.state;
 
 
-        return <div>
+        return <div className="movies">
 
 
             <div className="container">
 
 
-                <h1 className="title">All <span>Movies</span> </h1>
 
-                <div className="wrapper">
-                    {
-                        data.map(({ id, title, poster_path }) => {
+                {
+                    isLoading ? <Spinner /> : <MoviesList data={this.state.data} />
+                }
 
-                            const imgUrl = `https://image.tmdb.org/t/p/w1280${poster_path}`
 
-                            return <Link to={`/main/movies/${id}`} key={id}>
-                                <img src={imgUrl} alt="" />
-                                <h1> {title} </h1>
-
-                            </Link>
-                        })
-                    }
-                </div>
-
-                <div className="button-wrapper">
-                    <button onClick={() => this.loadMore()}> Load More</button>
-                </div>
             </div>
         </div>
     }

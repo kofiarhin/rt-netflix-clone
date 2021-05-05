@@ -2,12 +2,18 @@ import React from "react"
 import Header from "../header/header.component"
 import { Link } from "react-router-dom"
 
+import SeriesList from "../series-list/series-list.component"
+import Spinner from "../spinner/spinner.component"
+
+import "./series.styles.scss"
+
 
 class Series extends React.Component {
 
     state = {
         data: [],
-        page: 1
+        page: 1,
+        isLoading: true
     }
 
     componentDidMount() {
@@ -19,7 +25,8 @@ class Series extends React.Component {
             const { results: data } = result;
 
             this.setState({
-                data
+                data,
+                isLoading: false
             })
         })
     }
@@ -45,32 +52,13 @@ class Series extends React.Component {
 
     render() {
 
-        const { data } = this.state;
+        const { data, isLoading } = this.state;
 
-        return <div>
+        return <div className="series">
 
-            <h1 className="title">All <span>Series</span> </h1>
-
-            <div className="container">
-                <div className="wrapper">
-                    {
-                        data.map(({ id, poster_path, name, ...rest }) => {
-
-
-                            return <Link to={`/main/series/${id}`} key={id}>
-
-                                <img src={`https://image.tmdb.org/t/p/w1280${poster_path}`} alt="" />
-                                <h1>  {name} </h1>
-
-                            </Link>
-                        })
-                    }
-                </div>
-
-                <div className="button-wrapper">
-                    <button onClick={() => this.loadMore()}>Load More</button>
-                </div>
-            </div>
+            {
+                isLoading ? <Spinner /> : <SeriesList data={this.state.data} />
+            }
 
         </div>
     }
