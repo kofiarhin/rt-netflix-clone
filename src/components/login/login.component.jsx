@@ -2,26 +2,35 @@ import React from "react"
 import Header from "../header/header.component"
 import { Link } from "react-router-dom"
 
-import { signInWithGoogle } from "../../firebase/firebase.utils"
+import { signInWithGoogle, auth } from "../../firebase/firebase.utils"
 
 import "./login.styles.scss"
 class Login extends React.Component {
 
     state = {
         email: "",
-        password: ""
+        password: "",
+        error: ""
     }
 
-    componentDidMount() {
 
-        console.log("login page")
-    }
-
-    handleSubmit = e => {
+    handleSubmit = async e => {
 
         e.preventDefault();
 
-        console.log("submit form")
+        const { email, password } = this.state;
+
+        try {
+
+            const { user } = await auth.signInWithEmailAndPassword(email, password)
+
+
+        } catch (error) {
+
+            this.setState({
+                error: error.message
+            })
+        }
     }
 
 
@@ -47,6 +56,9 @@ class Login extends React.Component {
 
                     <input type="text" placeholder="Email" name="email" value={this.state.email} onChange={this.handleChange} />
                     <input type="password" placeholder="Password" name="password" value={this.state.password} onChange={this.handleChange} />
+
+                    <p className="error"> {this.state.error} </p>
+
                     <button>Login</button>
                     <button className="google" onClick={signInWithGoogle}>Login With Google</button>
 

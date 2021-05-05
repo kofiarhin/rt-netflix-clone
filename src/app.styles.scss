@@ -36,6 +36,13 @@ button {
     }
 }
 
+.error {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: $red;
+    font-weight: 500;
+}
+
 .container {
     width: 1200px;
     max-width: 90%;
