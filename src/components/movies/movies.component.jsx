@@ -14,7 +14,9 @@ class Movies extends React.Component {
     state = {
         data: [],
         page: 1,
-        isLoading: true
+        isLoading: true,
+        searchResult: [],
+        search: ""
     }
 
     componentDidMount() {
@@ -55,6 +57,39 @@ class Movies extends React.Component {
         })
     }
 
+    handleSubmit = e => {
+
+        e.preventDefault();
+
+        const { search } = this.state;
+
+        if (search !== "") {
+
+            const url = `https://api.themoviedb.org/3/search/movie?query=${search}&api_key=ca357c71903c409f2ce08d61e75700a6&language=en-US&page=1&include_adult=false`
+
+
+            fetch(url).then(response => response.json()).then(result => {
+
+                const { results } = result;
+
+                this.setState({
+                    data: results,
+                    isLoading: false
+                })
+            })
+
+
+        }
+    }
+
+    handleChange = e => {
+        const { name, value } = e.target;
+
+        this.setState({
+            [name]: value
+        })
+    }
+
     render() {
 
         const { data, isLoading } = this.state;
@@ -65,7 +100,9 @@ class Movies extends React.Component {
 
             <div className="container">
 
-
+                <form action="" onSubmit={this.handleSubmit}>
+                    <input type="text" placeholder="Search Movies" name="search" onChange={this.handleChange} value={this.state.search} />
+                </form>
 
                 {
                     isLoading ? <Spinner /> : <MoviesList data={this.state.data} />

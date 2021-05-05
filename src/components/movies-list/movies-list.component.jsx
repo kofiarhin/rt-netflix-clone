@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 
 const MoviesList = ({ data }) => {
 
-    return <div className="container">
+    return <div>
         <h1 className="title">All <span>Movies</span> </h1>
 
         <div className="wrapper">
