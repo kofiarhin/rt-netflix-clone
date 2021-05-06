@@ -22,13 +22,15 @@ const Header = ({ currentUser }) => {
                 <Link to="/main/movies">Movies</Link>
                 <Link to="/main/series">Series</Link>
 
+
                 {
                     currentUser ?
                         <div className="options">
 
+                            <Link to="/main/list"> My List</Link>
                             <span onClick={() => auth.signOut()}> Sign Out </span>
                         </div>
-                        : <Link to="/main/login">Login</Link>
+                        : <Link to="/main/login" className="cta">Login</Link>
                 }
 
 

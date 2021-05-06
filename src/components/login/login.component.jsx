@@ -45,26 +45,32 @@ class Login extends React.Component {
 
     render() {
 
-        return <div className="login">
+        return <div className="login" style={{
+            backgroundImage: `url(/img/landing-bg.jpeg)`
+        }}>
 
-            <h1 className="title">Login</h1>
+            <div className="overlay"></div>
 
-            <div className="form-wrapper">
+            <div className="content">
+                <h1 className="title">Login</h1>
+
+                <div className="form-wrapper">
 
 
-                <form action="" onSubmit={this.handleSubmit}>
+                    <form action="" onSubmit={this.handleSubmit}>
 
-                    <input type="text" placeholder="Email" name="email" value={this.state.email} onChange={this.handleChange} />
-                    <input type="password" placeholder="Password" name="password" value={this.state.password} onChange={this.handleChange} />
+                        <input type="text" placeholder="Email" name="email" value={this.state.email} onChange={this.handleChange} />
+                        <input type="password" placeholder="Password" name="password" value={this.state.password} onChange={this.handleChange} />
 
-                    <p className="error"> {this.state.error} </p>
+                        <p className="error"> {this.state.error} </p>
 
-                    <button>Login</button>
-                    <button className="google" onClick={signInWithGoogle}>Login With Google</button>
+                        <button>Login</button>
+                        <button className="google" onClick={signInWithGoogle}>Login With Google</button>
 
-                    <p> Dont have an account ?  <Link to='/main/register'> Register</Link>  </p>
-                </form>
+                        <p> Dont have an account ?  <Link to='/main/register'> Register</Link>  </p>
+                    </form>
 
+                </div>
             </div>
         </div>
     }

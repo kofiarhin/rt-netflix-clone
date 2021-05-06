@@ -100,6 +100,8 @@ class Movies extends React.Component {
 
             <div className="container">
 
+                <h1 className="title">All <span>Movies</span> </h1>
+
                 <form action="" onSubmit={this.handleSubmit}>
                     <input type="text" placeholder="Search Movies" name="search" onChange={this.handleChange} value={this.state.search} />
                 </form>
@@ -107,6 +109,11 @@ class Movies extends React.Component {
                 {
                     isLoading ? <Spinner /> : <MoviesList data={this.state.data} />
                 }
+
+
+                <div className="button-wrapper">
+                    <button onClick={() => this.loadMore()}> Load More</button>
+                </div>
 
 
             </div>

@@ -9,7 +9,12 @@ import "./home.styles.scss"
 class Home extends React.Component {
 
 
+    handleSubmit = e => {
+        e.preventDefault();
 
+        // do some backend stuff with email address
+        this.props.history.push("/main/login")
+    }
     render() {
 
         return <div className="home" style={{
@@ -30,10 +35,13 @@ Watch anywhere. Cancel anytime.</h1>
 </p>
                 </div>
 
-                <div className="input-wrapper">
-                    <input type="text" placeholder="Email Address" />
-                    <button> Get Started</button>
-                </div>
+
+                <form action="" onSubmit={this.handleSubmit}>
+                    <div className="input-wrapper">
+                        <input type="text" placeholder="Email Address" />
+                        <button> Get Started</button>
+                    </div>
+                </form>
             </div>
         </div>
     }

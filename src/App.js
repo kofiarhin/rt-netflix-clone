@@ -22,14 +22,20 @@ class  App  extends React.Component {
         user: null
     }
 
+    unsubscribe = null;
+
     componentDidMount() {
 
       console.log(this.props)
 
-        auth.onAuthStateChanged(user => {
+        this.unsubscribe =  auth.onAuthStateChanged(user => {
 
               this.props.dispatch(setCurrentUser(user))
         })
+    }
+
+    componentWillUnmount() {
+      this.unsubscribe()
     }
 
 

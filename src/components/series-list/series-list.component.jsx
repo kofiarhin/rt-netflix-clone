@@ -5,7 +5,7 @@ const SeriesList = ({ data }) => {
 
     return <div>
 
-        <h1 className="title">All <span>Series</span> </h1>
+
 
         <div className="container">
             <div className="wrapper">

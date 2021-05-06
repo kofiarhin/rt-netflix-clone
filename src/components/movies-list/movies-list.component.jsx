@@ -4,7 +4,6 @@ import { Link } from "react-router-dom"
 const MoviesList = ({ data }) => {
 
     return <div>
-        <h1 className="title">All <span>Movies</span> </h1>
 
         <div className="wrapper">
 
@@ -23,9 +22,7 @@ const MoviesList = ({ data }) => {
             }
         </div>
 
-        <div className="button-wrapper">
-            <button onClick={() => this.loadMore()}> Load More</button>
-        </div>
+
     </div>
 }
 
