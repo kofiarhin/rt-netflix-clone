@@ -42,9 +42,7 @@ class Serie extends React.Component {
 
             <div className="content-wrapper">
 
-                <div className="img-wrapper">
-                    <img src={posterUrl} alt="" />
-                </div>
+
 
                 <div className="text-wrapper">
                     <h1> {title}  </h1>

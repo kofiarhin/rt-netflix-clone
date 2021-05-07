@@ -10,7 +10,8 @@ class Register extends React.Component {
 
     state = {
         email: "",
-        password: ""
+        password: "",
+        error: ""
     }
 
     handleSubmit = async e => {
@@ -21,11 +22,12 @@ class Register extends React.Component {
         try {
             await auth.createUserWithEmailAndPassword(email, password);
 
-            console.log()
 
         } catch (error) {
 
-            console.log(error.message)
+            this.setState({
+                error: error.message
+            })
         }
 
 
@@ -41,21 +43,34 @@ class Register extends React.Component {
     }
 
     render() {
-        return <div className="register">
+        return <div className="main-form" style={{
+            backgroundImage: `url(/img/landing-bg.jpeg)`
+        }}>
+
+            <div className="overlay"></div>
+
+            <div className="content">
+
+                <h1 className="title">Register</h1>
+
+                <div className="form-wrapper">
 
 
-            <h1 className="title">Register</h1>
+                    <form action="" onSubmit={this.handleSubmit}>
 
-            <div className="form-wrapper">
+                        <input type="text" placeholder="Email" name="email" value={this.state.email} onChange={this.handleChange} />
+                        <input type="password" placeholder="Password" name="password" value={this.state.password} onChange={this.handleChange} />
 
-                <form action="" onSubmit={this.handleSubmit}>
+                        <p className="error"> {this.state.error} </p>
 
-                    <input type="text" placeholder="Email" name="email" onChange={this.handleChange} value={this.state.email} />
-                    <input type="password" placeholder="Password" name="password" onChange={this.handleChange} value={this.state.password} />
-                    <button>Register</button>
-                    <p> Already have an accont ?  <Link to='/main/login'> Login</Link>  </p>
-                </form>
+                        <button>Login</button>
 
+                        <p className="error"> {this.state.error} </p>
+
+                        <p> Already have an account ?  <Link to='/main/login'> Login</Link>  </p>
+                    </form>
+
+                </div>
             </div>
         </div>
     }

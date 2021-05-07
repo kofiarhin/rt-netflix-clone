@@ -40,5 +40,14 @@
     .header .container {
         flex-direction: column;
         padding-bottom: 2rem;
+
+        a {
+            font-size: 1rem;
+            &.cta {
+                padding: 0.8rem 2rem;
+            }
+        }
     }
+
+   
 }
