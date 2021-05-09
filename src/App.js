@@ -10,7 +10,7 @@ import Serie from "./components/serie/serie.component"
 import Footer from "./components/footer/footer.component"
 import Register from "./components/register/register.component"
 import Main from "./components/Main/main.component"
-import { auth  } from "./firebase/firebase.utils"
+import { auth, createUserProfile  } from "./firebase/firebase.utils"
 import "./app.styles.scss"
 import { connect } from "react-redux"
 import { setCurrentUser } from "./redux/user/user.action"
@@ -26,11 +26,35 @@ class  App  extends React.Component {
 
     componentDidMount() {
 
-      console.log(this.props)
 
-        this.unsubscribe =  auth.onAuthStateChanged(user => {
+        this.unsubscribe =  auth.onAuthStateChanged( async user => {
+          
+          if(user) {
 
-              this.props.dispatch(setCurrentUser(user))
+            const { userRef } = await createUserProfile(user);
+
+            const snapshot  = await userRef.get()
+
+
+            if(snapshot.exists) {
+
+              const {email, displayName} = snapshot.data();
+
+              
+              this.props.dispatch(setCurrentUser({
+                email,
+                displayName,
+                id: snapshot.id
+              }))
+            }
+
+              
+          } else {
+
+            this.props.dispatch(setCurrentUser())
+          }
+
+              
         })
     }
 

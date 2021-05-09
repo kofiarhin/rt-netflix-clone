@@ -10,18 +10,45 @@ const config = {
     messagingSenderId: "193540039996",
     appId: "1:193540039996:web:a4f066316082c76f64ea39"
   };
-  // Initialize Firebase
-  firebase.initializeApp(config);
-
-  export const firestore = firebase.firestore();
-  export const auth = firebase.auth()
-
-  const provider = new firebase.auth.GoogleAuthProvider();
-
-  provider.setCustomParameters({prompt: "select_account"})
 
 
-  export const signInWithGoogle = () => auth.signInWithPopup(provider)
+firebase.initializeApp(config);
+
+export const firestore = firebase.firestore();
+export const auth = firebase.auth()
+
+const provider = new firebase.auth.GoogleAuthProvider();
+
+provider.setCustomParameters({prompt: "select_account"})
+
+
+export const signInWithGoogle = () => auth.signInWithPopup(provider)
+
+
+
+export const createUserProfile = async (userAuth, additionalData) => {
+
+  
+  if(!userAuth) return;
+  
+  const { displayName, email, uid }  = userAuth;
+
+    const userRef = firestore.doc(`users/${uid}`)
+
+    const snapshot = await userRef.get();
+
+    if(!snapshot.exists)  {
+
+          userRef.set({
+            email,
+            displayName,
+            ...additionalData 
+          })
+    }
+
+    return { userRef}
+  
+}
 
 export {
     firebase

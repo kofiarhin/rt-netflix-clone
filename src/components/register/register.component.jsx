@@ -1,9 +1,10 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import Header from "../header/header.component"
-import { auth } from "../../firebase/firebase.utils"
+import { auth, createUserProfile } from "../../firebase/firebase.utils"
 
 import "./register.styles.scss"
+import { setCurrentUser } from "../../redux/user/user.action"
 
 
 class Register extends React.Component {
@@ -11,17 +12,27 @@ class Register extends React.Component {
     state = {
         email: "",
         password: "",
+        displayName: "",
         error: ""
     }
 
     handleSubmit = async e => {
+
         e.preventDefault();
 
         const { email, password, displayName } = this.state;
 
-        try {
-            await auth.createUserWithEmailAndPassword(email, password);
 
+        try {
+            const { user } = await auth.createUserWithEmailAndPassword(email, password);
+
+            await createUserProfile(user, { displayName })
+
+            this.props.dispatch(setCurrentUser({
+                email,
+                displayName,
+                id: user.uid
+            }))
 
         } catch (error) {
 
@@ -58,12 +69,13 @@ class Register extends React.Component {
 
                     <form action="" onSubmit={this.handleSubmit}>
 
+                        <input type="text" placeholder="Display Name" name="displayName" value={this.state.displayName} onChange={this.handleChange} />
                         <input type="text" placeholder="Email" name="email" value={this.state.email} onChange={this.handleChange} />
                         <input type="password" placeholder="Password" name="password" value={this.state.password} onChange={this.handleChange} />
 
                         <p className="error"> {this.state.error} </p>
 
-                        <button>Login</button>
+                        <button>Register</button>
 
                         <p className="error"> {this.state.error} </p>
 

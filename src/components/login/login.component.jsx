@@ -2,7 +2,7 @@ import React from "react"
 import Header from "../header/header.component"
 import { Link } from "react-router-dom"
 
-import { signInWithGoogle, auth } from "../../firebase/firebase.utils"
+import { signInWithGoogle, auth, createUserProfile } from "../../firebase/firebase.utils"
 
 import "./login.styles.scss"
 class Login extends React.Component {
@@ -67,7 +67,7 @@ class Login extends React.Component {
                         <p className="error"> {this.state.error} </p>
 
                         <button>Login</button>
-                        <button className="google" onClick={signInWithGoogle}>Login With Google</button>
+                        <button className="google" onClick={() => signInWithGoogle()}>Login With Google</button>
 
                         <p> Dont have an account ?  <Link to='/main/register'> Register</Link>  </p>
                     </form>
