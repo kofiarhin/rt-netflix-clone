@@ -8,6 +8,7 @@ import Register from "../register/register.component"
 import Serie from "../serie/serie.component"
 import Movie from "../movie/movie.component"
 import { connect } from "react-redux"
+import Profile from "../profile/profile.component"
 
 
 const Main = ({ currentUser }) => {
@@ -23,6 +24,8 @@ const Main = ({ currentUser }) => {
             <Route path="/main/series/:id" exact component={Serie} />
             <Route path="/main/login" exact render={() => currentUser ? <Movies /> : <Login />} />
             <Route path="/main/register" exact render={() => currentUser ? <Movies /> : <Register />} />
+
+            <Route path="/main/profile" render={() => currentUser ? <Profile /> : <Login />} />
         </Switch>
     </div>
 }

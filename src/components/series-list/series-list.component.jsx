@@ -23,9 +23,7 @@ const SeriesList = ({ data }) => {
                 }
             </div>
 
-            <div className="button-wrapper">
-                <button onClick={() => this.loadMore()}>Load More</button>
-            </div>
+
         </div>
     </div>
 }

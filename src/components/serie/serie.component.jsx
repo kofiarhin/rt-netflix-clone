@@ -1,5 +1,6 @@
 import React from "react"
-import Header from "../header/header.component"
+import { connect } from "react-redux"
+import { firestore } from "../../firebase/firebase.utils";
 
 
 class Serie extends React.Component {
@@ -26,7 +27,59 @@ class Serie extends React.Component {
 
     }
 
+
+    // handle save
+
+    handleSave = async () => {
+
+        const { currentUser } = this.props;
+        const { data: { poster_path, backdrop_path, id: seriesId } } = this.state;
+
+
+        //check database if item already exist
+
+        firestore.collection("userSeries").where("userId", "==", currentUser.id).get().then(async snapshot => {
+
+            let userSeries = []
+            snapshot.docs.forEach(doc => {
+
+                userSeries.push(doc.data())
+            });
+
+            // check if item already exist
+            const existing = userSeries.find(item => item.seriesId === seriesId);
+
+            if (!existing) {
+
+                const dataToSubmit = {
+                    poster_path,
+                    userId: currentUser.id,
+                    backdrop_path,
+                    seriesId
+                };
+
+                try {
+                    await firestore.collection('userSeries').add(dataToSubmit)
+                    console.log("seires added")
+                } catch (error) {
+
+                    console.log(error)
+                }
+            } else {
+
+                console.log("item alrady added")
+            }
+
+        })
+
+
+
+    }
+
     render() {
+
+        const { currentUser } = this.props;
+
 
         const { name: title, poster_path, backdrop_path, overview } = this.state.data;
 
@@ -49,7 +102,7 @@ class Serie extends React.Component {
                     <p> {overview} </p>
                     <div className="button-wrapper">
                         <button className="play">Play</button>
-                        <button className="save">Save</button>
+                        <button className="save" disabled={currentUser ? false : true} onClick={this.handleSave} >Save</button>
                     </div>
                 </div>
 
@@ -58,4 +111,9 @@ class Serie extends React.Component {
     }
 }
 
-export default Serie;
+const mapStateToProps = state => {
+    return {
+        currentUser: state.user.currentUser
+    }
+}
+export default connect(mapStateToProps)(Serie);

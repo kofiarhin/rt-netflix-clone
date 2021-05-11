@@ -103,6 +103,11 @@ class Series extends React.Component {
                     isLoading ? <Spinner /> : <SeriesList data={this.state.data} />
                 }
 
+
+                <div className="button-wrapper">
+                    <button onClick={() => this.loadMore()}>Load More</button>
+                </div>
+
             </div>
         </div>
     }
