@@ -71,8 +71,6 @@ button {
     grid-auto-rows: minmax(300px, auto);
     grid-gap: 20px;
     text-align: center;
-    min-height: 100vh;
-    grid-auto-rows: 300px;
     h1 {
         font-size: 1.2rem;
         color: white;
@@ -81,7 +79,6 @@ button {
     img {
         width: 100%;
         margin-bottom: .8rem;
-        height: 100%;
     }
 
 }

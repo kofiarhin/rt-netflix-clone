@@ -102,7 +102,8 @@ class Serie extends React.Component {
                     <p> {overview} </p>
                     <div className="button-wrapper">
                         <button className="play">Play</button>
-                        <button className="save" disabled={currentUser ? false : true} onClick={this.handleSave} >Save</button>
+
+                        {currentUser ? <button className="save" onClick={this.handleSave} >Save</button> : null}
                     </div>
                 </div>
 

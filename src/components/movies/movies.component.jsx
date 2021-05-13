@@ -106,11 +106,11 @@ class Movies extends React.Component {
                     <input type="text" placeholder="Search Movies" name="search" onChange={this.handleChange} value={this.state.search} />
                 </form>
 
-                {
-                    isLoading ? <Spinner /> : <MoviesList data={this.state.data} />
-                }
+                <MoviesList data={data} />
 
 
+
+                {/* todo -  load current search */}
                 <div className="button-wrapper">
                     <button onClick={() => this.loadMore()}> Load More</button>
                 </div>

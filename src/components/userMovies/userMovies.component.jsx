@@ -31,22 +31,26 @@ class UserMovies extends React.Component {
     render() {
 
         const { data } = this.state;
+
+        console.log(data)
         return <div>
 
-            {data.length > 0 ? <h1 className="title-small">Saved <span>Series</span> </h1> : null}
+            {data.length > 0 ? <h1 className="title-small">Saved <span>Movies</span> </h1> : null}
 
-            <div className="user-list">
-                {
-                    data.map(({ movieId, poster_path }) => {
+            {
+                data.length > 0 ? <div className="user-list">
+                    {
+                        data.map(({ movieId, poster_path }) => {
 
-                        const imgUrl = `https://image.tmdb.org/t/p/w1280${poster_path}`
-                        return <Link to={`/main/movies/${movieId}`} key={movieId}>
+                            const imgUrl = `https://image.tmdb.org/t/p/w1280${poster_path}`
+                            return <Link to={`/main/movies/${movieId}`} key={movieId}>
 
-                            <img src={imgUrl} alt="" />
-                        </Link>
-                    })
-                }
-            </div>
+                                <img src={imgUrl} alt="" />
+                            </Link>
+                        })
+                    }
+                </div> : <h1>You dont have any saved movies</h1>
+            }
 
 
         </div>

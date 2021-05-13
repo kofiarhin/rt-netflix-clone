@@ -27,6 +27,7 @@ class Movie extends React.Component {
 
     handleSave = async e => {
 
+
         const { currentUser: { id: userId } } = this.props;
 
         const { movie: { id: movieId, poster_path, backdrop_path, title } } = this.state;
@@ -53,25 +54,17 @@ class Movie extends React.Component {
                 try {
 
                     await firestore.collection('userMovies').add(dataToSubmit);
-                    console.log("movie added")
                 } catch (error) {
 
 
                 }
             } else {
 
-                console.log("movie already added")
             }
         } else {
 
             await firestore.collection("userMovies").add(dataToSubmit)
         }
-
-
-
-
-
-
 
 
     }
@@ -100,7 +93,7 @@ class Movie extends React.Component {
                     <p> {overview} </p>
                     <div className="button-wrapper">
                         <button className="play">Play</button>
-                        <button className="save" onClick={this.handleSave} disabled={currentUser ? false : true}>  Save</button>
+                        {currentUser ? <button className="save" onClick={() => this.handleSave()}>Save</button> : null}
                     </div>
                 </div>
 

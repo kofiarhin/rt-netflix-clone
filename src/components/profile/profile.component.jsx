@@ -7,52 +7,12 @@ import SavedSeries from "../savedSeries/savedSeries.component"
 
 class Profile extends React.Component {
 
-    state = {
-        userMovies: []
-    }
-
-
-    componentDidMount() {
-
-        const { currentUser: { id } } = this.props;
-
-        firestore.collection("userMovies").where("userId", "==", id).get().then(docs => {
-
-            let data = []
-            docs.forEach(doc => {
-
-                data.push(doc.data())
-
-            });
-
-            this.setState({
-                userMovies: data
-            })
-        })
-        // firestore.collection('userMovies').get().then(docs => {
-        //     let savedMovies = []
-
-        //     docs.forEach(doc => {
-
-        //         savedMovies.push(doc.data())
-        //     })
-
-        //     let userMovies = savedMovies.filter(movie => movie.userId === id);
-
-        //     this.setState({
-        //         userMovies
-        //     })
-        // })
-
-    }
-
 
 
     render() {
 
         const { currentUser } = this.props;
 
-        const { userMovies } = this.state;
 
 
         return <div className="layout">
@@ -66,7 +26,6 @@ class Profile extends React.Component {
             <div className="container">
 
                 <UserMovies />
-
                 <SavedSeries />
 
             </div>
