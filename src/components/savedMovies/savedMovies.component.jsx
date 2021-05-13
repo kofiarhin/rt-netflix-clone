@@ -3,7 +3,7 @@ import { connect } from "react-redux"
 import { firestore } from "../../firebase/firebase.utils"
 import { Link } from "react-router-dom"
 
-class UserMovies extends React.Component {
+class SavedMovies extends React.Component {
 
     state = {
         data: []
@@ -62,4 +62,4 @@ const mapStateToProps = state => {
         currentUser: state.user.currentUser
     }
 }
-export default connect(mapStateToProps)(UserMovies);
+export default connect(mapStateToProps)(SavedMovies);

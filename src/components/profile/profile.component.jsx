@@ -2,7 +2,7 @@ import React from "react"
 import { connect } from "react-redux"
 import { firestore } from "../../firebase/firebase.utils"
 import { Link } from "react-router-dom"
-import UserMovies from "../userMovies/userMovies.component"
+import SavedMovies from "../savedMovies/savedMovies.component"
 import SavedSeries from "../savedSeries/savedSeries.component"
 
 class Profile extends React.Component {
@@ -25,7 +25,7 @@ class Profile extends React.Component {
             {/* user movies */}
             <div className="container">
 
-                <UserMovies />
+                <SavedMovies />
                 <SavedSeries />
 
             </div>
