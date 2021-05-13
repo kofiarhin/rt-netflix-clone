@@ -49,7 +49,7 @@ class SavedSeries extends React.Component {
 
                         const posterUrl = `https://image.tmdb.org/t/p/w1280${poster_path}`
 
-                        return <Link to={`/main/series/${seriesId}`} key={seriesId}>
+                        return <Link to={`/main/series/${seriesId}`} key={seriesId} className="unit" >
 
                             <img src={posterUrl} alt="" />
                         </Link>

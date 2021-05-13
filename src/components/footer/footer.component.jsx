@@ -47,7 +47,7 @@ const Footer = () => {
         </div>
 
         <div className="container">
-            <p>Created by Kofi Arhin</p>
+            <p> <a href="https://github.com/kofiarhin" target="_blank"> Kofi Arhin </a> </p>
         </div>
 
 

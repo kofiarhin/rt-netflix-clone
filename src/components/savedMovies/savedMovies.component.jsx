@@ -43,7 +43,8 @@ class SavedMovies extends React.Component {
                         data.map(({ movieId, poster_path }) => {
 
                             const imgUrl = `https://image.tmdb.org/t/p/w1280${poster_path}`
-                            return <Link to={`/main/movies/${movieId}`} key={movieId}>
+
+                            return <Link to={`/main/movies/${movieId}`} key={movieId} className="unit">
 
                                 <img src={imgUrl} alt="" />
                             </Link>

@@ -266,14 +266,22 @@ button {
 .user-list {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    grid-gap: 20px;
+    grid-gap: 10px;
     margin-bottom: 2rem;
     img {
         width: 100%;
     }
 
     h1 {
-        color: red;
+        color: $red;
+    }
+
+    .unit {
+        transition: all ease-in-out 300ms;
+        &:hover {
+            transform: scale(1.1);
+            z-index: 4000
+        }
     }
 }
 
